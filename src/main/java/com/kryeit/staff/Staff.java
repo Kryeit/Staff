@@ -1,6 +1,7 @@
 package com.kryeit.staff;
 
 import com.kryeit.staff.commands.EnderInvsee;
+import com.kryeit.staff.commands.Invsee;
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 
@@ -12,7 +13,7 @@ public class Staff implements DedicatedServerModInitializer {
 
         CommandRegistrationCallback.EVENT.register((dispatcher, dedicatedServer, commandFunction) -> {
             EnderInvsee.register(dispatcher);
-
+            Invsee.register(dispatcher);
         });
     }
 }
