@@ -29,7 +29,6 @@ public class Invsee {
                             return 1;
                         })
                 ));
-
     }
 
     public static GenericContainerScreenHandler createGeneric9x4(int syncId, PlayerInventory playerInventory, Inventory inventory) {
