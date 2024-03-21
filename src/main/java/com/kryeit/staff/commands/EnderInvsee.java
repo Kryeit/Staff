@@ -3,6 +3,7 @@ package com.kryeit.staff.commands;
 import com.kryeit.staff.commands.completion.SuggestionsProvider;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
+import me.lucko.fabric.api.permissions.v0.Permissions;
 import net.minecraft.block.ChestBlock;
 import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.block.enums.ChestType;
@@ -22,6 +23,7 @@ import java.awt.*;
 public class EnderInvsee {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(CommandManager.literal("enderinvsee")
+                .requires(source -> Permissions.check(source, "group.staff", false))
                 .then(CommandManager.argument("player", EntityArgumentType.player())
                         .executes(context -> {
                             EnderInvsee.openEnderChest(context.getSource().getEntity(), EntityArgumentType.getPlayer(context, "player"));

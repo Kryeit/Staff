@@ -1,6 +1,7 @@
 package com.kryeit.staff.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
+import me.lucko.fabric.api.permissions.v0.Permissions;
 import net.fabricmc.fabric.mixin.container.ServerPlayerEntityAccessor;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.entity.Entity;
@@ -21,6 +22,7 @@ public class Invsee {
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(CommandManager.literal("invsee")
+                .requires(source -> Permissions.check(source, "group.staff", false))
                 .then(CommandManager.argument("player", EntityArgumentType.player())
                         .executes(context -> {
                             Invsee.openInventory(context.getSource().getEntity(), EntityArgumentType.getPlayer(context, "player"));
